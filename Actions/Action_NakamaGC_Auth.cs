@@ -26,8 +26,6 @@
 		public VariableProperty user_Created = new VariableProperty();
 		public VariableProperty user_CreateTime = new VariableProperty();
 		public VariableProperty user_IsExpired = new VariableProperty();
-
-		public VariableProperty tokken = new VariableProperty();
 		private bool isDone = false;
 		private ISession session;
 		public override IEnumerator Execute(GameObject target, IAction[] actions, int index)
@@ -41,9 +39,10 @@
 			while (!task.IsCompleted) yield return null; // Scheint soweit fehlerfrei errors bewältigen zu können...
             try
             {
+				NakamaManager.session = task.Result; // We save the session in static NakamaManager.session
 				statusCode.Set(0, target);
 
-				tokken.Set(task.Result.AuthToken, target);
+				user_AuthTokken.Set(task.Result.AuthToken, target);
 				user_UserId.Set(task.Result.UserId, target);
 				user_Username.Set(task.Result.Username, target);
 				user_Created.Set(task.Result.Created, target);
