@@ -9,6 +9,7 @@ namespace Mutare.GameCreator.Nakama
         public static Client client = null;
         public static ISession session = null;
         public static ISocket socket = null;
+        public static IApiAccount account = null;
 
         [Header("Connection")]
         public string schema = "http";
