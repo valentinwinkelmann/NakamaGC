@@ -40,6 +40,7 @@
             try
             {
 				NakamaManager.session = task.Result; // We save the session in static NakamaManager.session
+				NakamaManager.Invoke_SessionConnect();
 				statusCode.Set(0, target);
 
 				user_AuthTokken.Set(task.Result.AuthToken, target);
